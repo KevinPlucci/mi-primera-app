@@ -1,11 +1,11 @@
-import ItemCount from '../ItemCount/index';
+import ItemCount from '../ItemCount/ItemCount';
 import React from 'react';
 import Title from '../Title';
 import CustomizedBadges from '../CartWidget';
 
 
 
-export const ItemListContainer = ({texto}) => {
+const ItemListContainer = ({texto}) => {
     
     const onAdd = (quantity) => {
         console.log(`Compraste ${quantity} unidades`);
