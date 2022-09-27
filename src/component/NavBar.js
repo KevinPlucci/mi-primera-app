@@ -5,10 +5,14 @@ import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 import CartWidget from './CarWidget';
+import { Link } from 'react-router-dom';
+import { useCartContext } from './cartContext';
 
 
 
-const NavBar = () =>{
+export const NavBar = (props) =>{
+  const{count} = props
+  const { AcumuladorCart } = useCartContext()
     return (
         <div>
      
@@ -18,20 +22,25 @@ const NavBar = () =>{
   <NavbarCollapse className="justify-content-center">
   <Nav >
    
-    <Nav.Link href="/">HOME</Nav.Link>
-     <NavDropdown title="CONSOLA" >
-
-       <NavDropdown.Item href="/consola/PS4">PS4</NavDropdown.Item>
-       <NavDropdown.Item href="/consola/PS3">PS3</NavDropdown.Item>
-       <NavDropdown.Item href="/consola/PC">PC</NavDropdown.Item>
-
+    <Link exact to='/'>HOME</Link>
+     <NavDropdown title="CONSOLA" className='Secciones' >
+        <div className='Secciones categoriasMenu'>
+       <Link exact to='/consola/PS4'>PS4</Link>
+       
+       <Link exact to='/consola/PS3'>PS3</Link>
+      
+       <Link exact to='/consola/PC'>PC</Link>
+       </div>
      </NavDropdown>
      <Nav.Link href="#">CONTACTOS</Nav.Link>
     
    </Nav>
   </NavbarCollapse>
-  
-  <CartWidget/> {/* CARRITO DE COMPRAS */}
+
+  <Link exact to='/cart'>
+  <CartWidget count = {count}/> {/* CARRITO DE COMPRAS */}
+   <h3>{AcumuladorCart()}</h3>
+  </Link>
   
  </Navbar>
 

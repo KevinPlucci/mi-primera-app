@@ -1,26 +1,48 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useCartContext } from "./cartContext";
-import ItemCount from "./ItemCount";
+
+
 
 
 const Cart = () => {
- const {carList} = useCartContext() 
- console.log(carList)
+ const {carList, BorrarItemCarrito, precioTotal, CantidadProd,borrarCarrito} = useCartContext() 
+ 
     return(
         <div>
-            <center>
+            <center className='carrito'>
                 <h2>CARRITO DE COMPRAS</h2>
-                <div className='tabla'>
+  
+                { carList.map(Item => 
+               
+                <div key={Item.id} className='tabla' > 
+
                 <th>
-                { carList.map(Item => <h2> {Item.item.nombre} </h2>) }
+                    <div className='detallesCarrito'>
+                    <img src = {Item.itemCart.portada} className='imagenDetalle' alt='portada'></img>
+                 <p>Precio unitario: $ {Item.itemCart.precio}</p>
+                 <p>Unidades: { CantidadProd(Item) }</p>  
+                 <p>SubTotal: $ { (CantidadProd(Item))*(Item.itemCart.precio) }</p>
+                <button onClick={()=>BorrarItemCarrito(Item)} >ELIMINAR</button>
+                 </div>   
                 </th>
-                <th>
-                { carList.map(Item => <img src = {Item.item.portada} className='imagenDetalle' alt='portada'></img>) }
-                </th>
+
+                </div>) }
+
+                 { (carList.length === 0) 
+                 ?
+                  <h3 className='totalCompra'> No hay Productos en el Carrito  </h3> 
+                  : 
+               <h3 className='totalCompra'> Total de la Compra $ { precioTotal() }  </h3> 
+               }
+                <div className='botonesCarrito'> 
+
+                <button onClick={()=>borrarCarrito()} >BORRAR CARRITO</button>
+                <Link to='/'>
+                <button>GALERIA DE JUEGOS</button>
+                </Link>
                 
-                </div>
-                
-                
+                </div>    
             </center>
         </div>
     )
