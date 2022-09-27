@@ -1,54 +1,43 @@
 import React, { useEffect, useState } from 'react';
-
+import { useParams } from 'react-router';
+import ItemDetail from '../component/ItemDetail';
 import { getJuegos } from '../utils/Mock';
 
-import  ItemList  from '../component/ItemList';
-import { useParams } from 'react-router'
 
 
-
-
-/* greeting es la props que recibe del padre.la informacion que trae la inyecta en el parrafo */
- function ItemListContainer ( { greeting} ) { 
-    const [juegos, setJuegos] = useState()
-
-
+function ItemDetailContainer () {
+    const [DetalleJuego, setDetalleJuego] = useState()
     const [cargando, setCargando] = useState(true)
+   
+   
 
-    const { idConsola } = useParams() //para capturar la URL
-    console.log(idConsola)
+    const { idItem } = useParams() //para capturar la URL
+    useEffect(()=>{
 
-
- useEffect(()=>{
-     
         getJuegos
-        .then((dataJuegos) =>{
-            if(idConsola){
-            const filtro = dataJuegos.filter((prod)=>prod.consola === idConsola)
-            setJuegos(filtro)
+        .then((datadetalle) =>{
+            if(idItem){
+            const idFiltrado = datadetalle.filter((prod)=>(prod.id) === parseInt(idItem))
+            
+            setDetalleJuego(idFiltrado)
             
            
              }else{
-                 setJuegos(dataJuegos)
+                setDetalleJuego(datadetalle)
             }
         })
         .catch(error => console.log(error))
         .finally(()=>setCargando(false))
+        
     
- }, [ idConsola ]);
+ }, [ idItem ]);
+ 
 
-    return (
+    return(
         <div>
-            <center> 
-            <h2> { greeting } </h2>
-            </center>
-            <div className='cardJuegos'>
-            { cargando ? <h2 className='cardNombre'>CARGANDO...</h2> : < ItemList juegos = {juegos} /> }
-            </div>
-
-           
+          { cargando ? <h2 className='cardNombre'>CARGANDO...</h2> : DetalleJuego &&  <ItemDetail  DetalleJuego={DetalleJuego[0]} />}
+        
         </div>
-            
     )
 }
-export default ItemListContainer
+export default ItemDetailContainer

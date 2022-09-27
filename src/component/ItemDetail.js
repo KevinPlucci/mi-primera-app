@@ -1,5 +1,3 @@
-
-
 import { useCartContext } from "./cartContext";
 
 import ItemCount from "./ItemCount";
