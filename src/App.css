@@ -1,3 +1,4 @@
+
 h1{
   text-align: center;
   padding: 1rem;
@@ -26,6 +27,7 @@ h2{
   }
   .cardJuegos{
     display: flex;
+    flex-wrap: wrap;
     width: 80%;
     margin: 0 auto;
   }
@@ -50,5 +52,7 @@ h2{
   .cardJuegoDetalle{
     margin: 1rem auto;
   }
+  
+  
   
   

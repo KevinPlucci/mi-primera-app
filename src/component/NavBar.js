@@ -7,6 +7,7 @@ import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 import CartWidget from './CarWidget';
 
 
+
 const NavBar = () =>{
     return (
         <div>
@@ -16,13 +17,15 @@ const NavBar = () =>{
   <NavbarToggle/>
   <NavbarCollapse className="justify-content-center">
   <Nav >
-  <Nav.Link href="#">HOME</Nav.Link>
+   
+    <Nav.Link href="/">HOME</Nav.Link>
      <NavDropdown title="CONSOLA" >
-       <NavDropdown.Item href="#">PS3</NavDropdown.Item>
-       <NavDropdown.Item href="#">PS4</NavDropdown.Item>
-       <NavDropdown.Item href="#">PC</NavDropdown.Item>
+
+       <NavDropdown.Item href="/consola/PS4">PS4</NavDropdown.Item>
+       <NavDropdown.Item href="/consola/PS3">PS3</NavDropdown.Item>
+       <NavDropdown.Item href="/consola/PC">PC</NavDropdown.Item>
+
      </NavDropdown>
-     <Nav.Link href="#">OFERTAS</Nav.Link>
      <Nav.Link href="#">CONTACTOS</Nav.Link>
     
    </Nav>

@@ -1,7 +1,17 @@
-import React from "react";
+import {useState  } from "react";
+import ItemCount from "./ItemCount";
 
-const ItemDetail = ({DetalleJuego}) =>{
 
+function ItemDetail  ({DetalleJuego}) {
+    
+
+    const [cantidadSeleccionada, setCantidadSeleccionada] = useState(0)
+
+    const onAdd = (cantidad)=>{
+        console.log(cantidad)
+        setCantidadSeleccionada(cantidad)
+    }
+    console.log(cantidadSeleccionada)
     return(
         <div>
     
@@ -21,6 +31,7 @@ const ItemDetail = ({DetalleJuego}) =>{
             
             
             </div>
+            <ItemCount stock = { 10 } initial = { 1 } onAdd = {onAdd} />
         </div>
     )
 }

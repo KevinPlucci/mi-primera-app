@@ -1,40 +1,50 @@
 import React, { useEffect, useState } from 'react';
-import ItemCount from '../component/ItemCount'
+
 import { getJuegos } from '../utils/Mock';
-import { juegosArray } from '../utils/Mock';
+
 import  ItemList  from '../component/ItemList';
+import { useParams } from 'react-router'
 
 
 
 
 /* greeting es la props que recibe del padre.la informacion que trae la inyecta en el parrafo */
- function ItemListContainer ( { greeting } ) { 
-    const [juegos, setJuegos] = useState([])
-    console.log(juegos)
+ function ItemListContainer ( { greeting} ) { 
+    const [juegos, setJuegos] = useState()
+
 
     const [cargando, setCargando] = useState(true)
 
-//creo un alert
-const onAdd = (cantidad)=>{
-    alert(`AGREGASTE ${cantidad} PRODUCTOS AL CARRITO`)
-}
- useEffect(()=>{
-    getJuegos
-    .then(dataJuegos =>{
-        setJuegos(dataJuegos)
-    })
-    .catch(error => console.log(error))
-    .finally(()=>setCargando(false))
+    const { idConsola } = useParams() //para capturar la URL
+    console.log(idConsola)
 
- }, [])
+
+ useEffect(()=>{
+     
+        getJuegos
+        .then((dataJuegos) =>{
+            if(idConsola){
+            const filtro = dataJuegos.filter((prod)=>prod.consola === idConsola)
+            setJuegos(filtro)
+            
+           
+             }else{
+                 setJuegos(dataJuegos)
+            }
+        })
+        .catch(error => console.log(error))
+        .finally(()=>setCargando(false))
+    
+ }, [ idConsola ]);
+
     return (
         <div>
             <p> { greeting } </p>
             <div className='cardJuegos'>
-            { cargando ? <h2 className='cardNombre'>CARGANDO...</h2> : < ItemList juegosArray = {juegosArray} /> }
+            { cargando ? <h2 className='cardNombre'>CARGANDO...</h2> : < ItemList juegos = {juegos} /> }
             </div>
 
-            <ItemCount stock = { 10 } initial = { 1 } onAdd = {onAdd} />
+           
         </div>
             
     )
