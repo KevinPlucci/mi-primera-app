@@ -21,10 +21,38 @@ h2{
    display: block;
    text-align: center;
    font-size: 2rem;
+   margin: 1rem;
+  }
+  .contadorCarrito button{
+   display: inline-block;
+    width: 5rem;
+    height: 2rem;
+    margin: auto auto;
+    border-radius: 0.4rem;
+    border: none;
+   }
+   .contadorCarrito button:hover{
+     border: 1px solid red;
+   }
+  .contadorCarrito{
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
   }
   .BotonItemCount{
     text-align: center;
+    margin: 1rem;
   }
+ 
+  .BotonFinalizarSeguir button{
+    margin: 1rem;
+    padding: 0.5rem;
+    border: none;
+  }
+  .BotonFinalizarSeguir button:hover{
+    border: 1px solid red;
+  }
+
   .cardJuegos{
     display: flex;
     flex-wrap: wrap;
@@ -52,6 +80,14 @@ h2{
   .cardJuegoDetalle{
     margin: 1rem auto;
   }
+  .tabla{
+    width: 50%;
+  }
+  .tabla th{
+    width: 25%;
+   
+  }
+  
   
   
   
