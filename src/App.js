@@ -26,7 +26,7 @@ function App (){
       </div>
         <Routes>
           <Route exact path="/" element={<ItemListContainer greeting = "JUEGOS"/>}/>
-          <Route exact path="/consola/:idConsola" component={<ItemListContainer/>}/>
+          <Route exact path="/consola/:idConsola" element={<ItemListContainer/>}/>
           <Route exact path="/consola/:idConsola" element = {<ItemListContainer/>}/>
           <Route exact path = "/item/:idItem" element = {<ItemDetailContainer/>}/>
           <Route exact path = "/cart" element ={<Cart/>}/>
