@@ -8,7 +8,7 @@ export default function CartContextProvider ({children}){ //con children estoy t
 
     const [carList, setCarList] = useState([])
     
-
+    
     const addToCart = (DatoCarrito) =>{ 
         
         const prodCart = [...carList]
