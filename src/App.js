@@ -6,7 +6,7 @@ import NavBar from './component/NavBar';
 import ItemDetailContainer from './component/ItemDetailContainer';
 import Cart from './component/Cart';
 import CartContextProvider from './component/cartContext';
-
+import Footer from './component/Footer';
 
 
 
@@ -31,6 +31,7 @@ function App (){
           <Route exact path = "/item/:idItem" element = {<ItemDetailContainer/>}/>
           <Route exact path = "/cart" element ={<Cart/>}/>
         </Routes>
+        <Footer/>
      </BrowserRouter>
 
      </CartContextProvider>

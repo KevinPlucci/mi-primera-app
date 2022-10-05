@@ -1,4 +1,5 @@
 import {useState} from "react";
+
 import { Link } from "react-router-dom";
 
 //creo el ItemCount y le paso los parametros
@@ -24,8 +25,9 @@ const ItemCount = ( { stock, initial, onAdd} ) =>{
         onAdd(count)
         setCambiarBoton(false)
     }
+  
     return(
-        <div> {/* creo el HTML */}
+        <div> 
             <div className = "contadorCarrito">
                 <button  onClick = {restar} > - </button> 
             <label >{count}</label>
@@ -35,17 +37,16 @@ const ItemCount = ( { stock, initial, onAdd} ) =>{
 
             <div className = "BotonItemCount">
            
-
             { cambiarBoton 
             ?  
-            <button onClick = {agregarCarrito} > AGREGAR AL CARRITO </button>
+            <p className="volverGaleria2" onClick = {agregarCarrito} > AGREGAR AL CARRITO </p>
             : 
             <div className='BotonFinalizarSeguir'>
-            <Link to={'/cart'} >
-             <button> FINALIZAR COMPRA </button>
+            <Link to={'/cart'} style={{ textDecoration: 'none' }}>
+             <p className="volverGaleria2"> FINALIZAR COMPRA </p>
             </Link>
-            <Link to={'/'} >
-             <button> SEGUIR COMPRANDO </button>
+            <Link to={'/'} style={{ textDecoration: 'none' }}>
+             <p className="volverGaleria" > SEGUIR COMPRANDO </p>
             </Link>
             </div>
             }
